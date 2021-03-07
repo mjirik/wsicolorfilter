@@ -23,7 +23,7 @@ class TestFilter(unittest.TestCase):
 
         x = train_data[['cos(hue)', 'sin(hue)', 'saturation', 'value']]
         y = train_data['label']
-        #
+
         x = x.to_numpy()
         y = y.to_numpy().astype('int8')
 
