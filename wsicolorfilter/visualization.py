@@ -4,7 +4,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from skimage.color import rgb2hsv
 
-from .dataset_creator import hue_to_continuous_2d
+from .annotation import hue_to_continuous_2d
 
 
 def show_visual(img, model, model_name):

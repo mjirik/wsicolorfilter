@@ -1,5 +1,6 @@
-from .filter import Filter
 import numpy as np
+
+from .filter import Filter
 
 
 class NearestNeighborFilter(Filter):

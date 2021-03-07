@@ -1,12 +1,11 @@
 import unittest
 
 import numpy as np
-from matplotlib import pyplot as plt
 import pandas as pd
 
+from .data_operations import load_image
 from .nearest_neighbor_filter import NearestNeighborFilter
 from .svm_filter import SvmFilter
-from .dataset_creator import load_image
 from .visualization import show_visual
 
 models = [NearestNeighborFilter(), SvmFilter()]

@@ -1,12 +1,8 @@
-"""Script for manual dataset creation"""
+import scaffan.image as scim
 import tkinter as tk
 from tkinter import filedialog
-
 import numpy as np
 import sed3
-
-import scaffan.image as scim
-from skimage.color import rgb2hsv, hsv2rgb
 
 
 def zoom_img(img, stride=10):
@@ -28,18 +24,6 @@ def zoom_img(img, stride=10):
           :
           ]
     return img
-
-
-def annotate(img):
-    """Use sed3 tool to annotate data from given image."""
-    ed = sed3.sed3(img)
-    ed.show()
-
-    seeds = ed.seeds
-    seeds = seeds[:, :, 0]
-    seeds = seeds.astype('int8')
-
-    return seeds
 
 
 def load_image(f_path=None):
@@ -73,35 +57,3 @@ def is_valid_input(inpt):
         return False
     inpt = int(inpt)
     return 0 < inpt < 3
-
-
-def run_annotation():
-    """Run the annotation process."""
-    img = load_image()
-    seeds = annotate(img)
-
-    img = rgb2hsv(img)
-    img = hue_to_continuous_2d(img)
-
-    np.save('seeds.npy', seeds)
-    np.save('image.npy', img)
-
-
-def import_pixel_train_data():
-    # load annotations
-    img = np.load('image.npy')
-    seeds = np.load('seeds.npy')
-
-    # remove not labeled pixels
-    img = img[seeds > 0.0]
-    seeds = seeds[seeds > 0.0]
-
-    with open('train_data.csv', 'a') as fd:
-        for i in range(img.shape[0]):
-            row = ','.join(map(str, img[i, :])) + ',' + str(seeds[i]) + '\n'
-            fd.write(row)
-
-
-if __name__ == '__main__':
-    # run_annotation()
-    import_pixel_train_data()
