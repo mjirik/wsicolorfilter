@@ -46,7 +46,7 @@ def btn_plus(event):
         [result != 0, result != 0, result != 0],
         axis=-1).astype('float32'))
 
-    plt.title(str(random.getrandbits(32)))
+    # plt.title(str(random.getrandbits(32)))
     plt.show()
 
 
@@ -59,7 +59,7 @@ def btn_minus(event):
         [result != 0, result != 0, result != 0],
         axis=-1).astype('float32'))
 
-    plt.title(str(random.getrandbits(32)))
+    # plt.title(str(random.getrandbits(32)))
     plt.show()
 
 
@@ -67,5 +67,5 @@ if __name__ == '__main__':
     btn_p.on_clicked(btn_plus)
     btn_m.on_clicked(btn_minus)
 
-    plt.title(str(random.getrandbits(32)))
+    # plt.title(str(random.getrandbits(32)))
     plt.show()

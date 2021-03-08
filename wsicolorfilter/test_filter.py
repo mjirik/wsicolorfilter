@@ -3,12 +3,13 @@ import unittest
 import numpy as np
 import pandas as pd
 
-from .data_operations import load_image
-from .nearest_neighbor_filter import NearestNeighborFilter
-from .svm_filter import SvmFilter
-from .visualization import show_visual
+from wsicolorfilter.nbg_filter import NaiveBayesFilter
+from wsicolorfilter.data_operations import load_image
+from wsicolorfilter.nearest_neighbor_filter import NearestNeighborFilter
+from wsicolorfilter.svm_filter import SvmFilter
+from wsicolorfilter.visualization import show_visual
 
-models = [NearestNeighborFilter(), SvmFilter()]
+models = [NearestNeighborFilter(), SvmFilter(), NaiveBayesFilter()]
 
 
 class TestFilter(unittest.TestCase):
@@ -37,7 +38,7 @@ class TestFilter(unittest.TestCase):
     def test_visual_comparsion(self):
         img = load_image()
 
-        model_names = ['Nearest Neighbor', 'SVM']
+        model_names = ['Nearest Neighbor', 'SVM', 'Naive Bayes Gaussian']
 
         for i in range(len(models)):
             show_visual(img, models[i], model_names[i])

@@ -1,15 +1,15 @@
 import pickle as plk
 
-from sklearn import svm
+from sklearn.naive_bayes import GaussianNB
 
 from wsicolorfilter.filter import Filter
 
 
-class SvmFilter(Filter):
+class NaiveBayesFilter(Filter):
     """Filter which assign each pixel to the nearest centroid of the model."""
 
     def create_model(self):
-        return svm.LinearSVC()
+        return GaussianNB()
 
     def train_model(self, x, y):
         # train model
@@ -27,10 +27,10 @@ class SvmFilter(Filter):
 
         return filter_mask
 
-    def load_model(self, file_name='svm_filter.npy'):
+    def load_model(self, file_name='nbg_filter.npy'):
         with open(file_name, 'rb') as file:
             self.model = plk.load(file)
 
-    def save_model(self, file_name='svm_filter.npy'):
+    def save_model(self, file_name='nbg_filter.npy'):
         with open(file_name, 'wb') as file:
             plk.dump(self.model, file)

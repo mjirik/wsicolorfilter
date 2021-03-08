@@ -6,7 +6,7 @@ import numpy as np
 import scaffan.image as scim
 import sed3
 from skimage.color import rgb2hsv
-from data_operations import load_image, hue_to_continuous_2d
+from wsicolorfilter.data_operations import load_image, hue_to_continuous_2d
 
 
 def annotate(img):

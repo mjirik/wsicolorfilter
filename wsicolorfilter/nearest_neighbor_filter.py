@@ -1,6 +1,6 @@
 import numpy as np
 
-from .filter import Filter
+from wsicolorfilter.filter import Filter
 
 
 class NearestNeighborFilter(Filter):
